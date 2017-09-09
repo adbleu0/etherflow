@@ -46,10 +46,10 @@ public class GetBalance {
 			accounts.forEach(acc -> {
 				String response = execute(acc);
 				try {
-					String balance = JsonUtil.parse(new ByteArrayInputStream(response.getBytes()), "$.result"); 
+					String balance = JsonUtil.parse(new ByteArrayInputStream(response.getBytes()), "$.result");
 					sb.append(String.join(":", acc, balance));
 					sb.append("\n");
-					sb.append(String.join(":", acc, HexUtil.intFromHex(balance)));
+					sb.append(String.join(":", acc, HexUtil.fromHex(balance)));
 					sb.append("\n");
 					sb.append("\n");
 				} catch (IOException e) {

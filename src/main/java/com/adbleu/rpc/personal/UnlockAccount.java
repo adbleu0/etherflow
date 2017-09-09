@@ -41,7 +41,7 @@ public class UnlockAccount {
 		try {
 			return HttpClient.execute(new JsonCall().setId(String.valueOf(System.nanoTime()))
 					.setMethod("personal_unlockAccount").addStringParam(address).addStringParam(password)
-					.addStringParam(HexUtil.intToHex(durationInSecs)));
+					.addStringParam(HexUtil.toHex(String.valueOf(durationInSecs))));
 		} catch (Exception e) {
 			return e.getMessage();
 		}

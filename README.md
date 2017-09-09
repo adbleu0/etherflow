@@ -372,3 +372,86 @@ jshell> Parity.deployContract("0x550a289a06670f1e2b7840b1a859307e95f6b1d2","test
 jshell>
 
 </code>
+
+### Send Ether
+
+Send ether to the contract
+
+<code>
+
+jshell> Parity.sendEther("0x00a329c0648769a73afac7f9381e08fb43dbea72", "", 2, "0x92b3c847c505b1a77ffad79cd855229950be9a5d", "0x12AF4","0x9184e72a000", "10");
+
+2017-09-09 21:21:46 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "id" : "34524416286699",
+  "method" : "personal_unlockAccount",
+  "params" : [ "0x00a329c0648769a73afac7f9381e08fb43dbea72", "", "0x2" ]
+}
+
+2017-09-09 21:21:46 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "result" : true,
+  "id" : 34524416286699
+}
+
+2017-09-09 21:21:46 [main] INFO :: 0x4563918244f400000
+
+2017-09-09 21:21:46 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "id" : "34524445195920",
+  "method" : "eth_sendTransaction",
+  "params" : [ {
+    "gas" : "0x12AF4",
+    "from" : "0x00a329c0648769a73afac7f9381e08fb43dbea72",
+    "to" : "0x92b3c847c505b1a77ffad79cd855229950be9a5d",
+    "value" : "0x4563918244f400000",
+    "gasPrice" : "0x9184e72a000"
+  } ]
+}
+
+2017-09-09 21:21:46 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "result" : "0x4735112196f3c97d31973dd8b343f93d316909f3d0fd42013da4140beb89a3af",
+  "id" : 34524445195920
+}
+
+2017-09-09 21:21:46 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "result" : "0x4735112196f3c97d31973dd8b343f93d316909f3d0fd42013da4140beb89a3af",
+  "id" : 34524445195920
+}
+
+0x4735112196f3c97d31973dd8b343f93d316909f3d0fd42013da4140beb89a3af
+
+</code>
+
+### Get Balance
+
+Get the balance on the contract
+
+<code>
+
+jshell> Parity.getBalance("0x92b3c847c505b1a77ffad79cd855229950be9a5d");
+
+2017-09-09 21:22:33 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "id" : "34571632315454",
+  "method" : "eth_getBalance",
+  "params" : [ "0x92b3c847c505b1a77ffad79cd855229950be9a5d" ]
+}
+
+2017-09-09 21:22:33 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "result" : "0x4563918244f400000",
+  "id" : 34571632315454
+}
+
+{
+  "jsonrpc" : "2.0",
+  "result" : "0x4563918244f400000",
+  "id" : 34571632315454
+}
+
+jshell>
+
+</code>

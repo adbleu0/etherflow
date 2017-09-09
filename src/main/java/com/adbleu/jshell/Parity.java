@@ -6,6 +6,7 @@ import com.adbleu.rpc.eth.SendEther;
 import com.adbleu.rpc.personal.ListAccounts;
 import com.adbleu.rpc.personal.NewAccount;
 import com.adbleu.rpc.personal.UnlockAccount;
+import com.adbleu.util.HexUtil;
 
 public class Parity {
 
@@ -41,6 +42,14 @@ public class Parity {
 		System.out
 				.println(new SendEther().execute(fromAddress, password, durationSecs, toAddress, gas, gasPrice, ether));
 
+	}
+
+	public static void fromHex(String hexValue) {
+		System.out.println(HexUtil.fromHex(hexValue));
+	}
+
+	public static void toHex(String decValue) {
+		System.out.println(HexUtil.toHex(decValue));
 	}
 
 }
