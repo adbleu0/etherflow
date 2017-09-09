@@ -2,6 +2,8 @@ package com.adbleu.util;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public final class SystemUtil {
 
@@ -14,5 +16,9 @@ public final class SystemUtil {
 		} catch (IOException ignored) {
 			return true;
 		}
+	}
+
+	public static String getFile(String fileName) throws IOException {
+		return new String(Files.readAllBytes(Paths.get(fileName)));
 	}
 }

@@ -1,0 +1,170 @@
+    /* "Hello.sol":26:224  contract Hello {... */
+  mstore(0x40, 0x60)
+  jumpi(tag_1, iszero(callvalue))
+  0x0
+  dup1
+  revert
+tag_1:
+tag_2:
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "Hello.sol":26:224  contract Hello {... */
+      mstore(0x40, 0x60)
+      jumpi(tag_1, iszero(calldatasize))
+      calldataload(0x0)
+      0x100000000000000000000000000000000000000000000000000000000
+      swap1
+      div
+      0xffffffff
+      and
+      dup1
+      0x27e235e3
+      eq
+      tag_2
+      jumpi
+    tag_1:
+        /* "Hello.sol":98:213  function () payable{... */
+    tag_3:
+        /* "Hello.sol":151:160  msg.value */
+      callvalue
+        /* "Hello.sol":127:135  balances */
+      0x0
+        /* "Hello.sol":127:147  balances[msg.sender] */
+      dup1
+        /* "Hello.sol":136:146  msg.sender */
+      caller
+        /* "Hello.sol":127:147  balances[msg.sender] */
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      dup2
+      mstore
+      0x20
+      add
+      swap1
+      dup2
+      mstore
+      0x20
+      add
+      0x0
+      keccak256
+      0x0
+        /* "Hello.sol":127:160  balances[msg.sender] += msg.value */
+      dup3
+      dup3
+      sload
+      add
+      swap3
+      pop
+      pop
+      dup2
+      swap1
+      sstore
+      pop
+        /* "Hello.sol":197:206  msg.value */
+      callvalue
+        /* "Hello.sol":170:178  balances */
+      0x0
+        /* "Hello.sol":170:193  balances[address(this)] */
+      dup1
+        /* "Hello.sol":187:191  this */
+      address
+        /* "Hello.sol":170:193  balances[address(this)] */
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      dup2
+      mstore
+      0x20
+      add
+      swap1
+      dup2
+      mstore
+      0x20
+      add
+      0x0
+      keccak256
+      0x0
+        /* "Hello.sol":170:206  balances[address(this)] += msg.value */
+      dup3
+      dup3
+      sload
+      add
+      swap3
+      pop
+      pop
+      dup2
+      swap1
+      sstore
+      pop
+        /* "Hello.sol":98:213  function () payable{... */
+    tag_4:
+        /* "Hello.sol":26:224  contract Hello {... */
+      stop
+        /* "Hello.sol":48:91  mapping(address => uint256) public balances */
+    tag_2:
+      jumpi(tag_5, iszero(callvalue))
+      0x0
+      dup1
+      revert
+    tag_5:
+      tag_6
+      0x4
+      dup1
+      dup1
+      calldataload
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      swap1
+      0x20
+      add
+      swap1
+      swap2
+      swap1
+      pop
+      pop
+      jump(tag_7)
+    tag_6:
+      mload(0x40)
+      dup1
+      dup3
+      dup2
+      mstore
+      0x20
+      add
+      swap2
+      pop
+      pop
+      mload(0x40)
+      dup1
+      swap2
+      sub
+      swap1
+      return
+    tag_7:
+      mstore(0x20, 0x0)
+      dup1
+      0x0
+      mstore
+      keccak256(0x0, 0x40)
+      0x0
+      swap2
+      pop
+      swap1
+      pop
+      sload
+      dup2
+      jump	// out
+
+    auxdata: 0xa165627a7a723058207b58c5e4260d53b7b13e955d951f67be296950d4238582dd7d475e1cbef4dce70029
+}

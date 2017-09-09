@@ -22,4 +22,22 @@ public class HexUtil {
 		}
 		return value.toString();
 	}
+	
+	
+	public static String toWei(String ether) {
+		BigInteger value = new BigInteger(ether, 16);
+		if (value.signum() < 0) {
+			throw new UnsupportedOperationException("Value cannot be negative");
+		}
+		return value.multiply(new BigInteger("1000000000000000000")).toString();
+	}
+	
+	public static String toWeiHex(String ether) {
+		BigInteger value = new BigInteger(ether, 16);
+		if (value.signum() < 0) {
+			throw new UnsupportedOperationException("Value cannot be negative");
+		}
+		return "0x"+value.multiply(new BigInteger("1000000000000000000")).toString(16);
+	}
+	
 }

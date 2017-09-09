@@ -1,0 +1,70 @@
+PragmaDirective
+   Source: "pragma solidity ^0.4.16;"
+ContractDefinition "Hello"
+   Source: "contract Hello {\n\n    mapping(address => uint256) public balances;\n\n    function () payable{\n        balances[msg.sender] += msg.value;\n        balances[address(this)] += msg.value;\n    }\n        \n}"
+  VariableDeclaration "balances"
+     Type: mapping(address => uint256)
+     Source: "mapping(address => uint256) public balances"
+    Mapping
+       Source: "mapping(address => uint256)"
+      ElementaryTypeName address
+         Source: "address"
+      ElementaryTypeName uint256
+         Source: "uint256"
+  FunctionDefinition "" - public
+     Source: "function () payable{\n        balances[msg.sender] += msg.value;\n        balances[address(this)] += msg.value;\n    }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n        balances[msg.sender] += msg.value;\n        balances[address(this)] += msg.value;\n    }"
+      ExpressionStatement
+         Source: "balances[msg.sender] += msg.value"
+        Assignment using operator +=
+           Type: uint256
+           Source: "balances[msg.sender] += msg.value"
+          IndexAccess
+             Type: uint256
+             Source: "balances[msg.sender]"
+            Identifier balances
+               Type: mapping(address => uint256)
+               Source: "balances"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+          MemberAccess to member value
+             Type: uint256
+             Source: "msg.value"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+      ExpressionStatement
+         Source: "balances[address(this)] += msg.value"
+        Assignment using operator +=
+           Type: uint256
+           Source: "balances[address(this)] += msg.value"
+          IndexAccess
+             Type: uint256
+             Source: "balances[address(this)]"
+            Identifier balances
+               Type: mapping(address => uint256)
+               Source: "balances"
+            FunctionCall
+               Type: address
+               Source: "address(this)"
+              ElementaryTypeNameExpression address
+                 Type: type(address)
+                 Source: "address"
+              Identifier this
+                 Type: contract Hello
+                 Source: "this"
+          MemberAccess to member value
+             Type: uint256
+             Source: "msg.value"
+            Identifier msg
+               Type: msg
+               Source: "msg"
