@@ -1,4 +1,4 @@
-package com.adbleu.jsonrpc.personal;
+package com.adbleu.rpc.personal;
 
 import java.io.IOException;
 
@@ -32,9 +32,13 @@ public class NewAccount {
 	 * @return
 	 * @throws IOException
 	 */
-	public String execute(final String password) throws IOException {
-		return HttpClient.execute(new JsonCall().setId(String.valueOf(System.nanoTime()))
-				.setMethod("personal_newAccount").addStringParam(password).addIntegerParam(100)).getResult();
+	public String execute(final String password) {
+		try {
+			return HttpClient.execute(new JsonCall().setId(String.valueOf(System.nanoTime()))
+					.setMethod("personal_newAccount").addStringParam(password).addIntegerParam(100));
+		} catch (Exception e) {
+			return e.getMessage();
+		}
 
 	}
 }

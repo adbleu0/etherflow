@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
 import com.adbleu.jsonrpc.JsonCall;
 import com.adbleu.jsonrpc.JsonCallSerializer;
 import com.adbleu.jsonrpc.JsonParser;
-import com.adbleu.jsonrpc.JsonResult;
 
 public final class HttpClient {
 
@@ -26,23 +25,23 @@ public final class HttpClient {
 	private HttpClient() {
 	}
 
-	public static JsonResult execute(final JsonCall call) throws IOException {
+	public static String execute(final JsonCall call) throws Exception {
 		return execute("http://localhost:8545", call);
 	}
-	
-	public static JsonResult execute(final String url, final JsonCall call) throws IOException {
+
+	public static String execute(final String url, final JsonCall call) throws Exception {
 		String request = null;
 		String response = null;
 		try {
 			request = JsonParser.toJson(call, JsonCall.class, new JsonCallSerializer());
 			LOG.info(JsonParser.prettyPrintJson(request));
 			response = HttpClient.executePostJson(url, new StringEntity(request), new ResponseHandlerImpl());
-			LOG.info(JsonParser.prettyPrintJson(response));
-			final JsonResult rr = JsonParser.fromJson(response, JsonResult.class);
-			return rr;
-		} catch (IOException e) {
+			response = JsonParser.prettyPrintJson(response);
+			LOG.info(response);
+			return response;
+		} catch (Exception e) {
 			LOG.error(request, e);
-			throw new IOException(String.join("\n", request, response), e);
+			throw new Exception(String.join("\n", request, response, e.toString()), e);
 		}
 	}
 
