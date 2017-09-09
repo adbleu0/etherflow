@@ -35,7 +35,7 @@ public class NewAccount {
 	public String execute(final String password) {
 		try {
 			return HttpClient.execute(new JsonCall().setId(String.valueOf(System.nanoTime()))
-					.setMethod("personal_newAccount").addStringParam(password).addIntegerParam(100));
+					.setMethod("personal_newAccount").addStringParam(password));
 		} catch (Exception e) {
 			return e.getMessage();
 		}

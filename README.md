@@ -88,7 +88,19 @@ jshell>
 
 </code>
 
-## Execute API calls
+## API calls
+
+### List of calls supported
+
+| API | Java call     | RPC API |
+| ---------- | ------------- | -----:|
+| Personal | Parity.listAccounts()  | [list accounts](https://github.com/paritytech/parity/wiki/JSONRPC-personal-module#personal_listaccounts)     |
+| Personal | Parity.newAccount(password)  |  [new account](https://github.com/paritytech/parity/wiki/JSONRPC-personal-module#personal_newaccount)     |
+| Personal | Parity.unlockAccount(address,password,duration)  | [unlock acc](https://github.com/paritytech/parity/wiki/JSONRPC-personal-module#personal_unlockaccount)  |
+| Eth | Parity.getBalance(address) | [get balance](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getbalance) |
+| Custom | Parity.getAllBalances() | Get all the balances on all your accs |
+
+### List Accounts
 
 <code>
 
@@ -119,7 +131,11 @@ jshell> Parity.listAccounts()
   "result" : [ "0x008ae303513c1ed9cb24bcf243b806c828e94b60", "0x009ed82813cacf2577410213802371e7abed7c7d", "0x00a329c0648769a73afac7f9381e08fb43dbea72" ],
   "id" : 15809296692549
 }
+</code>
 
+### New account
+
+<code>
 jshell> Parity.newAccount("test")
 
 2017-09-09 16:05:58 [main] INFO :: {
@@ -143,9 +159,79 @@ jshell> Parity.newAccount("test")
 
 </code>
 
-## List of calls supported
+### Unlock account
 
-| Java call     | Example       | RPC API |
-| ------------- |:-------------:| -----:|
-| Parity.listAccounts()  |               | [list accounts](https://github.com/paritytech/parity/wiki/JSONRPC-personal-module#personal_listaccounts)     |
-| Parity.newAccount(<password>)  |  Parity.newAccount("passwordforacc")            | [new account](https://github.com/paritytech/parity/wiki/JSONRPC-personal-module#personal_newaccount)     |
+<code>
+
+jshell> Parity.unlockAccount("0x550a289a06670f1e2b7840b1a859307e95f6b1d2", "test", 10)
+
+2017-09-09 16:52:04 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "id" : "19441721103892",
+  "method" : "personal_unlockAccount",
+  "params" : [ "0x550a289a06670f1e2b7840b1a859307e95f6b1d2", "test", "0xa" ]
+}
+
+2017-09-09 16:52:04 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "result" : true,
+  "id" : 19441721103892
+}
+
+{
+  "jsonrpc" : "2.0",
+  "result" : true,
+  "id" : 19441721103892
+}
+
+</code>
+
+### Get Balance
+
+<code>
+jshell> Parity.getBalance("0x550a289a06670f1e2b7840b1a859307e95f6b1d2")
+
+2017-09-09 17:08:11 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "id" : "20409114911365",
+  "method" : "eth_getBalance",
+  "params" : [ "0x550a289a06670f1e2b7840b1a859307e95f6b1d2" ]
+}
+
+2017-09-09 17:08:12 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "result" : "0x0",
+  "id" : 20409114911365
+}
+
+{
+  "jsonrpc" : "2.0",
+  "result" : "0x0",
+  "id" : 20409114911365
+}
+</code>
+
+### Get All Balances
+
+Custom method to list all the balances on all your accounts
+
+<code>
+
+jshell> Parity.getAllBalances()
+
+0x00298510ab85f7f2af9cfe76c7369068e2ff2728:0x0
+0x00298510ab85f7f2af9cfe76c7369068e2ff2728:0
+
+0x008ae303513c1ed9cb24bcf243b806c828e94b60:0x152d02c7e14ad9b60140
+0x008ae303513c1ed9cb24bcf243b806c828e94b60:99999999999999517000000
+
+0x009ed82813cacf2577410213802371e7abed7c7d:0x0
+0x009ed82813cacf2577410213802371e7abed7c7d:0
+
+0x00a329c0648769a73afac7f9381e08fb43dbea72:0xffffffffffffffffffffffffffffffead2fd381eb509800000
+0x00a329c0648769a73afac7f9381e08fb43dbea72:1606938044258990275541962092341162602422202993782792835301376
+
+0x550a289a06670f1e2b7840b1a859307e95f6b1d2:0x0
+0x550a289a06670f1e2b7840b1a859307e95f6b1d2:0
+
+</code>

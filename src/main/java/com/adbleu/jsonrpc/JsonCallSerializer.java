@@ -33,6 +33,12 @@ public class JsonCallSerializer extends JsonSerializer<JsonCall> {
 				gen.writeString(p);
 			}
 		}
+		List<Integer> ilist = call.getIntegerParams();
+		if (!ilist.isEmpty()) {
+			for (Integer i : ilist) {
+				gen.writeNumber(i);
+			}
+		}
 		gen.writeEndArray();
 		gen.writeEndObject();
 	}
