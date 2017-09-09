@@ -23,6 +23,7 @@ http://jdk.java.net/9/
 
 jshell> System.out.println("hello world")
 hello world
+
 jshell> /exit
 </code>
 
@@ -47,8 +48,7 @@ git clone https://github.com/adbleu0/etherflow.git
 
 The personal API is turned by be default in the config.toml for RPC calls for obvious reasons.
 
-Only enable it for development if you know what your are doing and have firewalls
-configured etc.
+Only enable it for development if you have firewalls configured.
 
 In this case we are demonstrating the API calls from the jshell to the parity node.
 
@@ -83,6 +83,7 @@ Start the shell passing the etherflow jar in the class-path
 
 |  Welcome to JShell -- Version 9
 |  For an introduction type: /help intro
+
 jshell>
 
 </code>
