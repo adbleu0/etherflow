@@ -46,7 +46,13 @@ git clone https://github.com/adbleu0/etherflow.git
 
 ## Start Parity
 
-The personal API is turned by be default in the config.toml for RPC calls for obvious reasons.
+The personal API is turned off by default in the config.toml for RPC calls for obvious reasons.
+
+<code>
+
+$HOME/.local/share/io.parity.ethereum/config.toml
+
+</code>
 
 Only enable it for development if you have firewalls configured.
 
