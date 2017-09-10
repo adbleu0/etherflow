@@ -1,6 +1,7 @@
 package com.adbleu.util;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class HexUtil {
 
@@ -37,6 +38,14 @@ public class HexUtil {
 			throw new UnsupportedOperationException("Value cannot be negative");
 		}
 		return "0x" + value.multiply(new BigInteger("1000000000000000000")).toString(16);
+	}
+
+	public static String abiAddress(String address) {
+		String add = address.replace("0x", "");
+		int len = 64 - add.length();
+		char[] pad = new char[len];
+		Arrays.fill(pad, '0');
+		return new String(pad) + add;
 	}
 
 }

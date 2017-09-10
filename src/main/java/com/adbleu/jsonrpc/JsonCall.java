@@ -14,6 +14,8 @@ public class JsonCall {
 	private String method;
 
 	private Map<String, String> objectParams = new HashMap<>();
+	
+	private List<String> arrayParams = new ArrayList<>();
 
 	private List<String> stringParams = new ArrayList<>();
 
@@ -85,10 +87,16 @@ public class JsonCall {
 		this.integerParams = integerParams;
 	}
 
-	@Override
-	public String toString() {
-		return "RpcCall [jsonrpc=" + jsonrpc + ", id=" + id + ", method=" + method + ", objectParams=" + objectParams
-				+ ", stringParams=" + stringParams + "]";
+	public List<String> getArrayParams() {
+		return arrayParams;
 	}
 
+	public void setArrayParams(List<String> arrayParams) {
+		this.arrayParams = arrayParams;
+	}
+
+	public JsonCall addArrayParam(String value) {
+		this.arrayParams.add(value);
+		return this;
+	}
 }

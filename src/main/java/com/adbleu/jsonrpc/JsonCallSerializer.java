@@ -27,6 +27,14 @@ public class JsonCallSerializer extends JsonSerializer<JsonCall> {
 			}
 			gen.writeEndObject();
 		}
+		List<String> arr = call.getArrayParams();
+		if (!arr.isEmpty()) {
+			gen.writeStartArray();
+			for(String v: arr) {
+				gen.writeString(v);
+			}
+			gen.writeEndArray();
+		}
 		List<String> plist = call.getStringParams();
 		if (!plist.isEmpty()) {
 			for (String p : plist) {
@@ -39,6 +47,7 @@ public class JsonCallSerializer extends JsonSerializer<JsonCall> {
 				gen.writeNumber(i);
 			}
 		}
+		
 		gen.writeEndArray();
 		gen.writeEndObject();
 	}

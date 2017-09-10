@@ -2,7 +2,9 @@ package com.adbleu.jshell;
 
 import com.adbleu.rpc.eth.DeployContract;
 import com.adbleu.rpc.eth.GetBalance;
+import com.adbleu.rpc.eth.InvokeCall;
 import com.adbleu.rpc.eth.SendEther;
+import com.adbleu.rpc.eth.TraceCall;
 import com.adbleu.rpc.personal.ListAccounts;
 import com.adbleu.rpc.personal.NewAccount;
 import com.adbleu.rpc.personal.UnlockAccount;
@@ -44,6 +46,18 @@ public class Parity {
 
 	}
 
+	public static void invokeCall(final String fromAddress, String toAddress, final String encodedData) {
+
+		System.out.println(new InvokeCall().execute(fromAddress, toAddress, encodedData));
+
+	}
+
+	public static void traceCall(final String fromAddress, String toAddress, final String encodedData) {
+
+		System.out.println(new TraceCall().execute(fromAddress, toAddress, encodedData));
+
+	}
+
 	public static void fromHex(String hexValue) {
 		System.out.println(HexUtil.fromHex(hexValue));
 	}
@@ -52,4 +66,7 @@ public class Parity {
 		System.out.println(HexUtil.toHex(decValue));
 	}
 
+	public static void abiAddress(String address) {
+		System.out.println(HexUtil.abiAddress(address));
+	}
 }

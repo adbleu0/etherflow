@@ -6,7 +6,6 @@ contract Hello {
 
     function () payable{
         balances[msg.sender] += msg.value;
-        balances[address(this)] += msg.value;
     }
         
 }

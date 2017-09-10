@@ -1,4 +1,4 @@
-    /* "Hello.sol":26:224  contract Hello {... */
+    /* "Hello.sol":26:178  contract Hello {... */
   mstore(0x40, 0x60)
   jumpi(tag_1, iszero(callvalue))
   0x0
@@ -16,7 +16,7 @@ tag_2:
 stop
 
 sub_0: assembly {
-        /* "Hello.sol":26:224  contract Hello {... */
+        /* "Hello.sol":26:178  contract Hello {... */
       mstore(0x40, 0x60)
       jumpi(tag_1, iszero(calldatasize))
       calldataload(0x0)
@@ -31,7 +31,7 @@ sub_0: assembly {
       tag_2
       jumpi
     tag_1:
-        /* "Hello.sol":98:213  function () payable{... */
+        /* "Hello.sol":98:167  function () payable{... */
     tag_3:
         /* "Hello.sol":151:160  msg.value */
       callvalue
@@ -70,46 +70,9 @@ sub_0: assembly {
       swap1
       sstore
       pop
-        /* "Hello.sol":197:206  msg.value */
-      callvalue
-        /* "Hello.sol":170:178  balances */
-      0x0
-        /* "Hello.sol":170:193  balances[address(this)] */
-      dup1
-        /* "Hello.sol":187:191  this */
-      address
-        /* "Hello.sol":170:193  balances[address(this)] */
-      0xffffffffffffffffffffffffffffffffffffffff
-      and
-      0xffffffffffffffffffffffffffffffffffffffff
-      and
-      dup2
-      mstore
-      0x20
-      add
-      swap1
-      dup2
-      mstore
-      0x20
-      add
-      0x0
-      keccak256
-      0x0
-        /* "Hello.sol":170:206  balances[address(this)] += msg.value */
-      dup3
-      dup3
-      sload
-      add
-      swap3
-      pop
-      pop
-      dup2
-      swap1
-      sstore
-      pop
-        /* "Hello.sol":98:213  function () payable{... */
+        /* "Hello.sol":98:167  function () payable{... */
     tag_4:
-        /* "Hello.sol":26:224  contract Hello {... */
+        /* "Hello.sol":26:178  contract Hello {... */
       stop
         /* "Hello.sol":48:91  mapping(address => uint256) public balances */
     tag_2:
@@ -166,5 +129,5 @@ sub_0: assembly {
       dup2
       jump	// out
 
-    auxdata: 0xa165627a7a723058207b58c5e4260d53b7b13e955d951f67be296950d4238582dd7d475e1cbef4dce70029
+    auxdata: 0xa165627a7a723058203867b148488136bb0bbea3a6f199e08a49cd03b15e4cf19cc5a4555ed6d6a78e0029
 }

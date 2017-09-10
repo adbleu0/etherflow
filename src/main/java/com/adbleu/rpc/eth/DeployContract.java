@@ -46,7 +46,7 @@ public class DeployContract {
 			LOG.info(file);
 
 			response = HttpClient.execute(new JsonCall().setId(String.valueOf(System.nanoTime()))
-					.setMethod("eth_sendTransaction").addObjectParam("from", fromAddress).addObjectParam("gas", gas)
+					.setMethod("parity_postTransaction").addObjectParam("from", fromAddress).addObjectParam("gas", gas)
 					.addObjectParam("gasPrice", gasPrice).addObjectParam("data", file));
 
 			String transactionReceipt = JsonPath.read(response, "$.result");
