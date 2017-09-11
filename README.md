@@ -110,7 +110,8 @@ Change the log4j.properties file in main/resources folder to log to a file
 | Eth | Parity.getBalance(address) | [get balance](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getbalance) |
 | Custom | Parity.getAllBalances() | Get all the balances on all your accs |
 | Custom | Parity.sendEther() | Send ether from one account to another |
-| Custom | Parity.deployContract() | Deploy a smart contract |
+| Custom | Parity.invokeCall() | Invoke a method on a smart contract |
+| Custom | Parity.traceCall() | Trace a method call on a smart contract |
 
 ### List Accounts
 
@@ -442,5 +443,85 @@ jshell>String encodedData = "0x27e235e300000000000000000000000000a329c0648769a73
 
 
 jshell> Parity.invokeCall(fromAddress, toAddress, encodedData)
+
+</code>
+
+### Trace a method call
+
+We'll be invoking the balances method on the Hello contract (under test/resources)
+
+<code>
+
+jshell> import com.adbleu.jshell.Parity;
+
+jshell> String fromAddress = "0x00a329c0648769a73afac7f9381e08fb43dbea72"
+fromAddress ==> "0x00a329c0648769a73afac7f9381e08fb43dbea72"
+
+jshell> String toAddress = "0x92b3c847c505b1a77ffad79cd855229950be9a5d"
+toAddress ==> "0x92b3c847c505b1a77ffad79cd855229950be9a5d"
+
+jshell>String encodedData = "0x27e235e300000000000000000000000000a329c0648769a73afac7f9381e08fb43dbea72";
+
+jshell> Parity.traceCall(fromAddress, toAddress, encodedData)
+
+2017-09-11 09:32:28 [main] INFO :: {
+  "jsonrpc" : "2.0",
+  "result" : {
+    "output" : "0x",
+    "stateDiff" : {
+      "0x0000000000000000000000000000000000000000" : {
+        "balance" : {
+          "*" : {
+            "from" : "0xf2db63568e3e9ec0",
+            "to" : "0xf5fedea8eca59ec0"
+          }
+        },
+        "code" : "=",
+        "nonce" : "=",
+        "storage" : { }
+      },
+      "0x00a329c0648769a73afac7f9381e08fb43dbea72" : {
+        "balance" : {
+          "*" : {
+            "from" : "0xffffffffffffffffffffffffffffffea3b81735510ad622000",
+            "to" : "0xffffffffffffffffffffffffffffffea3b7e4fd9be4efb2000"
+          }
+        },
+        "code" : "=",
+        "nonce" : {
+          "*" : {
+            "from" : "0x17",
+            "to" : "0x18"
+          }
+        },
+        "storage" : { }
+      }
+    },
+    "trace" : [ {
+      "action" : {
+        "callType" : "call",
+        "from" : "0x00a329c0648769a73afac7f9381e08fb43dbea72",
+        "gas" : "0x2fa9828",
+        "input" : "0x27e235e300000000000000000000000000a329c0648769a73afac7f9381e08fb43dbea72",
+        "to" : "0x92b3c847c505b1a77ffad79cd855229950be9a5d",
+        "value" : "0x0"
+      },
+      "result" : {
+        "gasUsed" : "0x0",
+        "output" : "0x"
+      },
+      "subtraces" : 0,
+      "traceAddress" : [ ],
+      "type" : "call"
+    } ],
+    "vmTrace" : {
+      "code" : "0x",
+      "ops" : [ ]
+    }
+  },
+  "id" : 436463190647
+}
+
+jshell>
 
 </code>
